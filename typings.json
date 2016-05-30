@@ -1,0 +1,9 @@
+{
+  "ambientDependencies": {
+    "node": "registry:dt/node#4.0.0+20160509154515",
+    "q": "registry:dt/q#0.0.0+20160417152954"
+  },
+  "dependencies": {
+    "node-uuid": "registry:npm/node-uuid#1.4.7+20160503013124"
+  }
+}

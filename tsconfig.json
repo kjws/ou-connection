@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "declaration": true,
+    "module": "commonjs",
+    "target": "es6",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noLib": false,
+    "outDir": "./dist",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "rootDir": "./src",
+    "noFallthroughCasesInSwitch": true,
+    "allowUnreachableCode": false,
+    "noImplicitUseStrict": false
+  },
+  "exclude": [
+    "node_modules",
+    "typings/browser",
+    "typings/browser.d.ts",
+    "dist",
+    "index.d.ts",
+    "test"
+  ],
+  "compileOnSave": true,
+  "buildOnSave": false,
+  "formatCodeOptions": {
+    "indentSize": 2
+  },
+  "atom": {
+    "rewriteTsconfig": false
+  }
+}
