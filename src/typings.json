@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "node-uuid": "registry:npm/node-uuid#1.4.7+20160503013124"
+  },
+  "globalDependencies": {
+    "node": "registry:dt/node#6.0.0+20160602155235",
+    "q": "registry:dt/q#0.0.0+20160417152954"
+  }
+}

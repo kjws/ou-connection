@@ -6,21 +6,16 @@
     "moduleResolution": "node",
     "noImplicitAny": false,
     "noLib": false,
-    "outDir": "./dist",
+    "outDir": "../dist",
     "preserveConstEnums": true,
     "removeComments": true,
-    "rootDir": "./src",
+    "rootDir": "./",
     "noFallthroughCasesInSwitch": true,
     "allowUnreachableCode": false,
     "noImplicitUseStrict": false
   },
   "exclude": [
-    "node_modules",
-    "typings/browser",
-    "typings/browser.d.ts",
-    "dist",
-    "index.d.ts",
-    "test"
+    "node_modules"
   ],
   "compileOnSave": true,
   "buildOnSave": false,

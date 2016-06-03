@@ -30,6 +30,6 @@ bower_components
 # Debug log from npm
 npm-debug.log
 
-/typings/
+typings/
 /dist/
 /test/

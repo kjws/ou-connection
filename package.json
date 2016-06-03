@@ -4,7 +4,7 @@
   "main": "dist/connection.js",
   "dependencies": {
     "node-uuid": "^1.4.7",
-    "rimraf": "^2.5.2"
+    "typings": "^1.0.4"
   },
   "devDependencies": {},
   "peerDependencies": {
@@ -12,7 +12,7 @@
     "q": ">=1.4"
   },
   "scripts": {
-    "install": "tsc && rimraf src"
+    "install": "cd src && typings install && tsc && cd .."
   },
   "author": "OUcare.com",
   "license": "ISC",
