@@ -4,15 +4,16 @@
   "main": "dist/connection.js",
   "dependencies": {
     "node-uuid": "^1.4.7",
-    "typings": "^1.0.4"
+    "q": "^1.4.1"
   },
-  "devDependencies": {},
-  "peerDependencies": {
-    "typescript": ">=1.8",
-    "q": ">=1.4"
+  "devDependencies": {
+    "@types/node": "^6.0.45",
+    "@types/node-uuid": "0.0.28",
+    "@types/q": "0.0.32",
+    "typescript": "^2.0.3"
   },
   "scripts": {
-    "install": "cd src && typings install && tsc && cd .."
+    "install": "cd src && tsc && cd .."
   },
   "author": "OUcare.com",
   "license": "ISC",

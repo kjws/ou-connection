@@ -63,7 +63,7 @@ function Connection(conn: Duplex, local: any) {
 
       // if the value is ever resolved, send the
       // fulfilled value across the wire
-      response.then(function(resolution) {
+      response.then(function (resolution) {
         try {
           resolution = encode(resolution);
         } catch (exception) {
@@ -79,7 +79,7 @@ function Connection(conn: Duplex, local: any) {
           "resolution": resolution
         });
         connection.put(new Buffer(envelope));
-      }, function(reason) {
+      }, function (reason) {
         try {
           reason = encode(reason);
         } catch (exception) {
@@ -95,7 +95,7 @@ function Connection(conn: Duplex, local: any) {
           "resolution": { "!": reason }
         });
         connection.put(new Buffer(envelope));
-      }, function(progress) {
+      }, function (progress) {
         try {
           progress = encode(progress);
           envelope = JSON.stringify({
@@ -153,10 +153,10 @@ function Connection(conn: Duplex, local: any) {
   // remote object.
   function makeRemote(id) {
     return Q['makePromise']({
-      when: function() {
+      when: function () {
         return this;
       }
-    }, function(op, args) {
+    }, function (op, args) {
       let localId = makeId();
       let response = makeLocal(localId);
       let message = JSON.stringify({
@@ -177,6 +177,11 @@ function Connection(conn: Duplex, local: any) {
   function encode(object, memo?, path?) {
     memo = memo || new Map();
     path = path || "";
+
+    if (object.toJSON instanceof Function) {
+      object = object.toJSON();
+    }
+
     if (object === undefined) {
       return { "%": "undefined" };
     } else if (Object(object) !== object) {
@@ -208,7 +213,7 @@ function Connection(conn: Duplex, local: any) {
         dispatchLocal(id, "resolve", object);
         return { "@": id, "type": typeof object };
       } else if (Array.isArray(object)) {
-        return object.map(function(value, index) {
+        return object.map(function (value, index) {
           return encode(value, memo, path + "/" + index);
         });
       } else if (
@@ -225,7 +230,7 @@ function Connection(conn: Duplex, local: any) {
         }
         for (let key in object) {
           if (has.call(object, key)) {
-            let newKey = key.replace(/[@!%\$\/\\]/, function($0) {
+            let newKey = key.replace(/[@!%\$\/\\]/, function ($0) {
               return "\\" + $0;
             });
             result[newKey] = encode(object[key], memo, path + "/" + newKey);
@@ -275,7 +280,7 @@ function Connection(conn: Duplex, local: any) {
     } else if (object["@"]) {
       let remote = makeRemote(object["@"]);
       if (object.type === "function") {
-        return function() {
+        return function () {
           return Q['fapply'](remote, Array.prototype.slice.call(arguments));
         };
       } else {
@@ -286,7 +291,7 @@ function Connection(conn: Duplex, local: any) {
       memo.set(path, newObject);
       for (let key in object) {
         if (has.call(object, key)) {
-          let newKey = key.replace(/\\([\\!@%\$\/])/, function($0, $1) {
+          let newKey = key.replace(/\\([\\!@%\$\/])/, function ($0, $1) {
             return $1;
           });
           newObject[newKey] = decode(object[key], memo, path + "/" + key);
