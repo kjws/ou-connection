@@ -178,7 +178,7 @@ function Connection(conn: Duplex, local: any) {
     memo = memo || new Map();
     path = path || "";
 
-    if (object && object.toJSON instanceof Function) {
+    if (object && object.toJSON instanceof Function && !(object instanceof Date)) {
       object = object.toJSON();
     }
 
